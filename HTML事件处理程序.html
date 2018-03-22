@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="button" value="click me" onclick="alert('clicked!')" />
+		<!--输出click-->
+		<input type="button" value="click me" onclick="alert(event.type)" />
+		<!--输出click me-->
+		<input type="button" value="click me" onclick="alert(this.value)" />  
+		<!--输出click me-->
+		<input type="button" value="click me" onclick="showValue()" />  
+		<input type="button" value="click me" onclick="showMessage(event)" />
+		
+		<!--<form method="post">
+			<input type="text" name="username" value="" />
+			<input type="button" value="Echo username" onclick="alert(username.value)" />
+		</form>
+		<script type="text/javascript">
+			function(){
+				with(document){
+					with(this.form){
+						with(this)
+					}
+				}
+			}
+		</script>
+		-->
+		<script type="text/javascript">
+			function showMessage(event){
+				console.log(event);
+				console.log(this);
+				alert("show message!");
+			}
+			function showValue(){
+				with(document){
+					with(this){
+//						alert(value);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

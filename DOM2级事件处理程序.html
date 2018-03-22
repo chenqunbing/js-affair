@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 200px;height: 200px;background: lightblue;" id="content">
+			<div style="width: 100px;height: 100px;background: green;" id="btn">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			var content=document.getElementById("content")
+			var btn=document.getElementById("btn");
+			
+			/*DOM2级方法添加事件处理程序可以添加多个事件处理程序，按照它们添加的顺序触发*/
+			content.addEventListener("click",function(){
+				alert("content1");
+			})
+			content.addEventListener("click",function(){
+				alert("content2");
+			})
+			btn.addEventListener("click",function(){
+				alert("btnClicked!");
+			})
+//			btn.addEventListener("click",function(){
+//				alert(this.id);
+//			})
+			/*删除用removeEventListener()*/
+			//错误，removeEventListener和addEventListener里面的第二个参数是函数，这两个函数是不一样的
+			/*也就是说removeEventListener无法移除匿名函数*/
+//			btn.removeEventListener("click",function(){
+//				alert(this.id);
+//			})
+			/*正确的操作*/
+			var handler=function(){
+				alert(this.id);
+			}
+			btn.addEventListener("click",handler,false);
+			btn.removeEventListener("click",handler,false);
+		</script>
+	</body>
+</html>

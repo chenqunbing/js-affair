@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div style="width: 200px;height: 200px;background: lightblue;" id="content">
+			<div style="width: 100px;height: 100px;background: green;" id="btn">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			/*IE事件处理程序可以添加多个事件，按照添加他们的相反的顺序执行，先添加的后执行，
+			 * 同时也可以使用detachEvent()来移除事件，同理，不能移除匿名函数
+			 */
+			var btn=document.getElementById("btn");
+			btn.attachEvent("onclick",function(){
+				alert("clicked!");
+			})
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 200px;height: 200px;background: lightblue;" id="content">
+			<div style="width: 100px;height: 100px;background: yellow;" id="btn1">
+				
+			</div>
+			<a id="tag" target="_blank" href="http://www.baidu.com">clicl me and go to baidu!</a>
+		</div>
+		<script type="text/javascript">
+			/*stopPropagation()主要用来阻止冒泡
+			 * preventDefault()主要用来阻止标签的默认行为
+			 */
+			var tag=document.getElementById("tag");
+			tag.addEventListener('click',function(event){
+				event.preventDefault();
+			},false);
+			
+			var btn1=document.getElementById("btn1")
+			var content=document.getElementById("content");
+			btn1.addEventListener("click",function(event){
+				alert("btn1");
+				event.stopPropagation();
+			});
+			content.addEventListener("click",function(){
+				alert("content");
+			})
+		</script>
+	</body>
+</html>
+

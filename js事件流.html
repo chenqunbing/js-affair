@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:200px;height:200px;background:lightblue" id="content">
+        <div style="width:100px;height:100px;background: lightyellow;" id="btn1">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+//  var content=document.getElementById("content");
+//  var btn1=document.getElementById('btn1');
+//  btn1.onclick=function(){
+//      alert("btn1");
+//  };
+//  content.onclick=function(){
+//      alert("content");
+//  }
+//  当点击btn1的时候,先出现btn1,然后再出现content
+
+//	var btn1=document.getElementById("btn1");
+//  var content=document.getElementById("content");
+//  btn1.onclick=function(){
+//      alert("btn1_click");
+//  }
+//  btn1.onclick=function(){
+//      alert("btn1_click2");
+//  }
+//  content.onclick=function(){
+//      alert("content_click");
+//  }
+//  当点击btn1的时候,先出现btn1_click2,再出现content_click
+
+	var btn1=document.getElementById("btn1");
+    var content=document.getElementById("content");
+    btn1.addEventListener("click",function(){
+        alert("btn1");
+    },false);
+    btn1.addEventListener("click",function(){
+        alert("btn2");
+    },false);
+    content.addEventListener("click",function(){
+        alert("content");
+    },false);
+//  依次弹出btn1,btn2,content
+</script>
+</html>

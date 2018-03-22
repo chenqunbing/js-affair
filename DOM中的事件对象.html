@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div style="width: 200px;height: 200px;background: lightblue;" id="content">
+			<div style="width: 100px;height: 100px;background: green;" id="btn">
+				
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			var btn=document.getElementById("btn");
+//			btn.onclick=function(event){
+//				console.log(event);
+//				alert(event.type);// "click"
+//			};
+//			btn.addEventListener("click",function(event){
+//				console.log(event);
+//			},false);
+//			
+			var handler=function(event){
+				switch(event.type){
+					case "click":
+						alert("clicked!");
+						break;
+					case "mouseover":
+						event.target.style.backgroundColor="red";
+						break;
+					case "mouseout":
+						event.target.style.backgroundColor='';
+						break;
+				}
+			}
+			
+			btn.onclick=handler;
+			btn.onmouseover=handler;
+			btn.onmouseout=handler;
+		</script>
+	</body>
+</html>

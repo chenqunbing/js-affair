@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="myLinks">
+			<li id="goSOmeWhere">Go somewhere!</li>
+			<li id="doSomething">Do Something!</li>
+			<li id="sayHi">Say Hi!</li>
+		</ul>
+		
+		<script type="text/javascript">
+			var obj={
+				addHandler:function(element,type,func){
+					if(element.addEventListener){
+						return element.addEventListener(type,func,false)
+					}else if(element.attachEvent){
+						return element.attachEvent("on"+type,func);
+					}else{
+						return element['on'+type]=func;
+					}
+				},
+				removeHandler:function(element,type,func){
+					if(element.removeEventListener){
+						return element.removeEventListener(type,func,false)
+					}else if(element.detachEvent){
+						return element.detachEvent("on"+type,func);
+					}else{
+						return element['on'+type]=null;
+					}
+				},
+				getEvent:function(event){
+					return event?event:window.event;
+				},
+				getTarget:function(event){
+					return event.target||event.srcElement;
+				},
+				preventDefault:function(event){
+					if(event.preventDefault){
+						event.preventDefault();
+					}else{
+						event.returnValue=false;
+					}
+				},
+				stopPropagation:function(event){
+					if(event.stopPropagation){
+						event.stopPropagation();
+					}else{
+						event.cancelBubble=true;
+					}
+				}
+			};
+			
+			/*传统的事件绑定*/
+//			var item1=document.getElementById("goSOmeWhere");
+//			var item2=document.getElementById("doSomething");
+//			var item3=document.getElementById("sayHi");
+//			
+//			obj.addHandler(item1,'click',function(event){
+//				location.href="http://www.baidu.com";
+//			});
+//			obj.addHandler(item2,'click',function(event){
+//				document.title="I has changed the document's title!";
+//			})
+//			obj.addHandler(item3,'click',function(event){
+//				alert("Hello!");
+//			})
+//			
+			/*事件委托*/
+			var myLinks=document.getElementById("myLinks");
+			obj.addHandler(myLinks,"click",function(event){
+				event=obj.getEvent(event);
+				var target=obj.getTarget(event);
+				switch(target.id){
+					case "goSOmeWhere":
+						location.href="http://www.baidu.com";
+						break;
+					case "doSomething":
+						document.title="I has changed the document's title!";
+						break;
+					case "sayHi":
+						alert("Hello!");
+						break;
+				}
+			});
+			
+			
+			
+		</script>
+	</body>
+</html>

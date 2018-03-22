@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var name="LiLi";
+			var o={
+				name:'Mike'
+			}
+			function sayName(name){
+				console.log(this.name)
+			}
+			
+//			sayName(); //"LiLi"
+//			sayName.bind(o)(); //"Mike"
+//			sayName.call(o);  //"Mike"
+//			sayName.apply(o); //"Mike"
+	
+		/*
+		 * with语句可以方便的来引用某个特定对象的已有属性，但是不能给对象添加属性
+		 * 要给对象添加新的属性，必须确定的指明对象
+		 * 语法：
+		 * with（objinstance）{
+		 * 	var str=属性1；
+		 * }
+		 * 省去了多次写属性的麻烦
+		 */
+			function Person(){
+				this.name="Mike";
+				this.age=12;
+				this.sex="男"
+			}
+			var person=new Person();
+			
+			with(person){
+				var str='姓名：'+name;
+				str+="性别："+sex;
+				str+="年龄："+age;
+				console.log(str);//姓名：Mike性别：男年龄：12
+				console.log(typeof str); //string
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

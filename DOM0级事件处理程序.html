@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="width: 100px;height: 100px;background: lightblue;" id="myBtn"></div>
+
+		<script type="text/javascript">
+			var btn=document.getElementById("myBtn");
+			btn.onclick=function(){
+				//程序中的this引用当前元素  下面输出myBtn
+				console.log(this.id); 
+//				alert("clicked!");
+			}
+			
+			/*删除通过DOM0级方法指定的事件处理程序*/
+			btn.onclick=null;
+		</script>
+	</body>
+</html>
